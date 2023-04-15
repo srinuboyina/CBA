@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1893361329EA6888009DAB2B /* DateHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361129EA6888009DAB2B /* DateHeaderTableViewCell.swift */; };
-		1893361429EA6888009DAB2B /* DateHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1893361229EA6888009DAB2B /* DateHeaderTableViewCell.xib */; };
 		1893361629EA6FEE009DAB2B /* DateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361529EA6FEE009DAB2B /* DateViewModel.swift */; };
 		1893361A29EA9EC7009DAB2B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361929EA9EC7009DAB2B /* UIColor+Extension.swift */; };
 		1893361C29EAA8FE009DAB2B /* DateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */; };
@@ -66,7 +65,6 @@
 
 /* Begin PBXFileReference section */
 		1893361129EA6888009DAB2B /* DateHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeaderTableViewCell.swift; sourceTree = "<group>"; };
-		1893361229EA6888009DAB2B /* DateHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		1893361529EA6FEE009DAB2B /* DateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModel.swift; sourceTree = "<group>"; };
 		1893361929EA9EC7009DAB2B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModelTests.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 				18AFE7A329E9595D0023ACB7 /* TransactionTableViewCell.swift */,
 				18AFE7A429E9595D0023ACB7 /* TransactionTableViewCell.xib */,
 				1893361129EA6888009DAB2B /* DateHeaderTableViewCell.swift */,
-				1893361229EA6888009DAB2B /* DateHeaderTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -400,7 +397,6 @@
 			files = (
 				18AFE7A029E953B90023ACB7 /* Main.storyboard in Resources */,
 				CD8C4C6528744C5E0056D371 /* iOS.Transactions.scrolling.png in Resources */,
-				1893361429EA6888009DAB2B /* DateHeaderTableViewCell.xib in Resources */,
 				CD8C4C6428744C5E0056D371 /* iOS.Transactions.png in Resources */,
 				CD8C4C322874350C0056D371 /* LaunchScreen.storyboard in Resources */,
 				CD8C4C6328744C5E0056D371 /* iOS.Map.png in Resources */,
