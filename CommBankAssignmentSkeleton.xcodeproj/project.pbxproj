@@ -11,6 +11,7 @@
 		1893361429EA6888009DAB2B /* DateHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1893361229EA6888009DAB2B /* DateHeaderTableViewCell.xib */; };
 		1893361629EA6FEE009DAB2B /* DateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361529EA6FEE009DAB2B /* DateViewModel.swift */; };
 		1893361A29EA9EC7009DAB2B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361929EA9EC7009DAB2B /* UIColor+Extension.swift */; };
+		1893361C29EAA8FE009DAB2B /* DateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */; };
 		18AFE7A029E953B90023ACB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18AFE79F29E953B80023ACB7 /* Main.storyboard */; };
 		18AFE7A229E954640023ACB7 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7A129E954640023ACB7 /* TransactionsViewModel.swift */; };
 		18AFE7A529E9595D0023ACB7 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7A329E9595D0023ACB7 /* TransactionTableViewCell.swift */; };
@@ -69,6 +70,7 @@
 		1893361229EA6888009DAB2B /* DateHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		1893361529EA6FEE009DAB2B /* DateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModel.swift; sourceTree = "<group>"; };
 		1893361929EA9EC7009DAB2B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModelTests.swift; sourceTree = "<group>"; };
 		18AFE79F29E953B80023ACB7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		18AFE7A129E954640023ACB7 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
 		18AFE7A329E9595D0023ACB7 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				18AFE7AC29E9683F0023ACB7 /* TransactionsViewModelTests.swift */,
 				18F8ADCA29E9BD080042AD83 /* PendingTransactionViewModelTests.swift */,
 				18F8ADCE29E9C8FF0042AD83 /* AccountViewModelTests.swift */,
+				1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */,
 			);
 			path = CommBankAssignmentSkeletonTests;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				18AFE7AD29E9683F0023ACB7 /* TransactionsViewModelTests.swift in Sources */,
 				18AFE7AB29E968290023ACB7 /* TransactionViewModelTests.swift in Sources */,
 				18F8ADCB29E9BD080042AD83 /* PendingTransactionViewModelTests.swift in Sources */,
+				1893361C29EAA8FE009DAB2B /* DateViewModelTests.swift in Sources */,
 				18F8ADCF29E9C8FF0042AD83 /* AccountViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
