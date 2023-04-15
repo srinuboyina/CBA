@@ -32,7 +32,7 @@ class CBATransactionController: UIViewController {
     }
     
     private func registerCells() {
-        tableView.register(UINib(nibName: "TransactionTableViewCell", bundle: nil), forCellReuseIdentifier: "TransactionTableViewCell")
+        tableView.register(TransactionTableViewCell.self, forCellReuseIdentifier: "TransactionTableViewCell")
         tableView.register(CBATransactionTableHeader.self, forHeaderFooterViewReuseIdentifier: "CBATransactionTableHeader")
         tableView.register(DateHeaderTableViewCell.self, forHeaderFooterViewReuseIdentifier: "DateHeaderTableViewCell")
     }
