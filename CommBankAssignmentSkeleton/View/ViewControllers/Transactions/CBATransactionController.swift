@@ -34,6 +34,7 @@ class CBATransactionController: UIViewController {
     private func registerCells() {
         tableView.register(UINib(nibName: "TransactionTableViewCell", bundle: nil), forCellReuseIdentifier: "TransactionTableViewCell")
         tableView.register(UINib(nibName: "DateHeaderTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "DateHeaderTableViewCell")
+        tableView.register(CBATransactionTableHeader.self, forHeaderFooterViewReuseIdentifier: "CBATransactionTableHeader")
     }
 }
 
@@ -55,9 +56,10 @@ extension CBATransactionController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            let headerView = CBATransactionTableHeader()
-            headerView.updateAccountDetails(account: viewModel.getAccountViewModel())
-            return headerView
+            if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CBATransactionTableHeader") as? CBATransactionTableHeader  {
+                headerView.updateAccountDetails(account: viewModel.getAccountViewModel())
+                return headerView
+            }
         } else if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "DateHeaderTableViewCell") as? DateHeaderTableViewCell {
             let viewModel = viewModel.getDateViewModel(section: section)
             header.updateDateDatails(dateViewModel: viewModel)
