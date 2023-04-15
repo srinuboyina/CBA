@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,39 +40,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-182" y="-357"/>
-        </scene>
-        <!--Map View Controller-->
-        <scene sceneID="GvF-WB-GSf">
-            <objects>
-                <viewController storyboardIdentifier="MapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fmO-mo-g3x" customClass="MapViewController" customModule="CommBankAssignmentSkeleton" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HmX-Cj-L3F">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Pq-JE-Mop">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <standardMapConfiguration key="preferredConfiguration"/>
-                                <connections>
-                                    <outlet property="delegate" destination="fmO-mo-g3x" id="99N-b8-Em8"/>
-                                </connections>
-                            </mapView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="NNk-7j-h6s"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="8Pq-JE-Mop" firstAttribute="leading" secondItem="NNk-7j-h6s" secondAttribute="leading" id="gdQ-5o-kA4"/>
-                            <constraint firstItem="NNk-7j-h6s" firstAttribute="bottom" secondItem="8Pq-JE-Mop" secondAttribute="bottom" id="kjd-dq-73f"/>
-                            <constraint firstItem="8Pq-JE-Mop" firstAttribute="top" secondItem="NNk-7j-h6s" secondAttribute="top" id="lFR-wY-wzM"/>
-                            <constraint firstItem="NNk-7j-h6s" firstAttribute="trailing" secondItem="8Pq-JE-Mop" secondAttribute="trailing" id="loF-LZ-0e5"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="map" destination="8Pq-JE-Mop" id="3nx-k1-eWZ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qeg-lh-k86" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="691" y="-322"/>
         </scene>
     </scenes>
     <resources>

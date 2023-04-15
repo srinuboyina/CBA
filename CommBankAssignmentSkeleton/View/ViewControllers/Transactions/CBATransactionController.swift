@@ -78,11 +78,15 @@ extension CBATransactionController: UITableViewDelegate, UITableViewDataSource {
 
 extension CBATransactionController:  LocationDelegate {
     func locationClicked(atmId: String) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        if let mapController = storyBoard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController {
-            mapController.atm  = viewModel.getATM(atmId: atmId)
-            self.navigationController?.pushViewController(mapController, animated: true)
-            _ = mapController.view
-        }
+        let mapController = MapViewController()
+        mapController.atm = viewModel.getATM(atmId: atmId)
+        self.navigationController?.pushViewController(mapController, animated: true)
+//        _ = mapController.view
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//        if let mapController = storyBoard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController {
+//            mapController.atm  = viewModel.getATM(atmId: atmId)
+//            self.navigationController?.pushViewController(mapController, animated: true)
+//            _ = mapController.view
+//        }
     }
 }

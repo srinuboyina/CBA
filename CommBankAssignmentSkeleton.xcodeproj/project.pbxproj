@@ -12,6 +12,7 @@
 		1893361629EA6FEE009DAB2B /* DateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361529EA6FEE009DAB2B /* DateViewModel.swift */; };
 		1893361A29EA9EC7009DAB2B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361929EA9EC7009DAB2B /* UIColor+Extension.swift */; };
 		1893361C29EAA8FE009DAB2B /* DateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */; };
+		1893361E29EAB4C5009DAB2B /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361D29EAB4C5009DAB2B /* UIViewController + Extension.swift */; };
 		18AFE7A029E953B90023ACB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18AFE79F29E953B80023ACB7 /* Main.storyboard */; };
 		18AFE7A229E954640023ACB7 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7A129E954640023ACB7 /* TransactionsViewModel.swift */; };
 		18AFE7A529E9595D0023ACB7 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7A329E9595D0023ACB7 /* TransactionTableViewCell.swift */; };
@@ -71,6 +72,7 @@
 		1893361529EA6FEE009DAB2B /* DateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModel.swift; sourceTree = "<group>"; };
 		1893361929EA9EC7009DAB2B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModelTests.swift; sourceTree = "<group>"; };
+		1893361D29EAB4C5009DAB2B /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		18AFE79F29E953B80023ACB7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		18AFE7A129E954640023ACB7 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
 		18AFE7A329E9595D0023ACB7 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				18AFE7AF29E96BD90023ACB7 /* Date+Extension.swift */,
 				1893361929EA9EC7009DAB2B /* UIColor+Extension.swift */,
+				1893361D29EAB4C5009DAB2B /* UIViewController + Extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 		18F8ADBC29E9A2EB0042AD83 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				CD8C4C5B28743D5D0056D371 /* AccountDetailsHeader.swift */,
 				18AFE7A329E9595D0023ACB7 /* TransactionTableViewCell.swift */,
 				18AFE7A429E9595D0023ACB7 /* TransactionTableViewCell.xib */,
 				18F8ADBE29E9A3250042AD83 /* TransactionHeaderCell.swift */,
@@ -200,7 +204,6 @@
 			children = (
 				18F8ADBC29E9A2EB0042AD83 /* Cells */,
 				CD8C4C292874350A0056D371 /* CBATransactionController.swift */,
-				CD8C4C5B28743D5D0056D371 /* AccountDetailsHeader.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1893361E29EAB4C5009DAB2B /* UIViewController + Extension.swift in Sources */,
 				1893361A29EA9EC7009DAB2B /* UIColor+Extension.swift in Sources */,
 				CD8C4C5E2874408B0056D371 /* Fonts.swift in Sources */,
 				18AFE7B029E96BD90023ACB7 /* Date+Extension.swift in Sources */,

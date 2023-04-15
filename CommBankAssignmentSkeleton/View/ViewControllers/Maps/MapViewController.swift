@@ -10,13 +10,24 @@ import MapKit
 
 class MapViewController: UIViewController {
     var atm:ATM!
-    @IBOutlet weak var map: MKMapView!
+    let mapView: MKMapView = MKMapView(frame: .zero)
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Map"
+        setupMapView()
+        self.view.backgroundColor = .white
+        self.title = "ATM Location"
         self.accessibilityLabel = "Map View"
-        map.delegate = self
         addAnnotation(atm: atm)
+    }
+    
+    private func setupMapView() {
+        view.addSubview(mapView)
+        mapView.delegate = self
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([ mapView.topAnchor.constraint(equalTo: view.topAnchor, constant:topbarHeight + 20)])
+        mapView.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
+        mapView.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
     }
     
     func addAnnotation(atm: ATM){
@@ -24,8 +35,8 @@ class MapViewController: UIViewController {
         annotation.title = atm.name + " " + atm.address
         annotation.coordinate = CLLocationCoordinate2D(latitude: atm.location.lat, longitude: atm.location.lng)
         let coordinateRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
-        map.setRegion(coordinateRegion, animated: true)
-        map.addAnnotation(annotation)
+        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.addAnnotation(annotation)
     }
 }
 
