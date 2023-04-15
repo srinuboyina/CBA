@@ -3,15 +3,12 @@
 import UIKit
 
 class CBATransactionTableHeader: UITableViewHeaderFooterView {
-
-    var account: Account? {
-        didSet {
-            guard let accountData = account else {return}
-            accountAccessLbl.text = accountData.accountName
-            accountNumber.text = accountData.accountNumber
-            availableFundsValue.text = prepareAmountText(amount: accountData.available)
-            availableBalanceValue.text = prepareAmountText(amount: accountData.balance)
-        }
+    
+    func updateAccountDetails(account: AccountViewModel) {
+        accountAccessLbl.text = account.accountName
+        accountNumber.text = account.accountNumber
+        availableFundsValue.text = account.availableFunds
+        availableBalanceValue.text = account.availableBalance
     }
     
     func prepareAmountText(amount: Double) -> String {
@@ -105,12 +102,11 @@ class CBATransactionTableHeader: UITableViewHeaderFooterView {
     }
 
     private func configureViews() {
-        
         let placeholderStackView = UIStackView(arrangedSubviews: [accountView, accountInfoView])
         placeholderStackView.distribution = .fillProportionally
         placeholderStackView.axis = .vertical
         placeholderStackView.translatesAutoresizingMaskIntoConstraints = false
-        placeholderStackView.heightAnchor.constraint(equalToConstant:200).isActive = true
+        //placeholderStackView.heightAnchor.constraint(equalToConstant:120).isActive = true
         contentView.addSubview(placeholderStackView)
         contentView.layer.borderColor = UIColor(hexFromString: "8AB1B2").cgColor
         contentView.layer.borderWidth = 15.0
@@ -137,9 +133,11 @@ class CBATransactionTableHeader: UITableViewHeaderFooterView {
         
         accountIconStack.heightAnchor.constraint(equalToConstant:80).isActive = true
         accountView.addSubview(accountIconStack)
-
+        accountView.backgroundColor = .white
+        accountView.heightAnchor.constraint(equalToConstant:80).isActive = true
+        
         NSLayoutConstraint.activate([
-            accountIconStack.leadingAnchor.constraint(equalTo: accountView.leadingAnchor, constant: 15),
+            accountIconStack.leadingAnchor.constraint(equalTo: accountView.leadingAnchor, constant: 30),
             accountIconStack.trailingAnchor.constraint(equalTo: accountView.trailingAnchor, constant: -15),
             accountIconStack.topAnchor.constraint(equalTo: accountView.topAnchor, constant: 15),
             accountIconStack.bottomAnchor.constraint(equalTo: accountView.bottomAnchor, constant: 0)
@@ -158,13 +156,15 @@ class CBATransactionTableHeader: UITableViewHeaderFooterView {
         accountInfoViewStack.distribution = .fillEqually
         accountInfoViewStack.axis = .vertical
         accountInfoViewStack.translatesAutoresizingMaskIntoConstraints = false
+        accountInfoViewStack.heightAnchor.constraint(equalToConstant:80).isActive = true
         accountInfoView.addSubview(accountInfoViewStack)
 
         NSLayoutConstraint.activate([
-            accountInfoViewStack.leadingAnchor.constraint(equalTo: accountInfoView.leadingAnchor, constant: 80),
+            accountInfoViewStack.leadingAnchor.constraint(equalTo: accountInfoView.leadingAnchor, constant: 95),
             accountInfoViewStack.topAnchor.constraint(equalTo: accountInfoView.topAnchor, constant: 0),
             accountInfoViewStack.trailingAnchor.constraint(equalTo: accountInfoView.trailingAnchor, constant: -40),
             accountInfoViewStack.bottomAnchor.constraint(equalTo: accountInfoView.bottomAnchor, constant: 0),
         ])
+        accountInfoView.heightAnchor.constraint(equalToConstant:80).isActive = true
     }
 }

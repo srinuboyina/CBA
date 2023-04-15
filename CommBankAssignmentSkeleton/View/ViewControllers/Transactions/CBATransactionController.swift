@@ -33,7 +33,6 @@ class CBATransactionController: UIViewController {
     
     private func registerCells() {
         tableView.register(UINib(nibName: "TransactionTableViewCell", bundle: nil), forCellReuseIdentifier: "TransactionTableViewCell")
-        tableView.register(UINib(nibName: "TransactionHeaderCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "TransactionHeaderCell")
         tableView.register(UINib(nibName: "DateHeaderTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "DateHeaderTableViewCell")
     }
 }
@@ -55,9 +54,10 @@ extension CBATransactionController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0, let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TransactionHeaderCell") as? TransactionHeaderCell {
-            header.updateAccountDetails(account: viewModel.getAccountViewModel())
-            return header
+        if section == 0 {
+            let headerView = CBATransactionTableHeader()
+            headerView.updateAccountDetails(account: viewModel.getAccountViewModel())
+            return headerView
         } else if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "DateHeaderTableViewCell") as? DateHeaderTableViewCell {
             let viewModel = viewModel.getDateViewModel(section: section)
             header.updateDateDatails(dateViewModel: viewModel)
@@ -81,12 +81,5 @@ extension CBATransactionController:  LocationDelegate {
         let mapController = MapViewController()
         mapController.atm = viewModel.getATM(atmId: atmId)
         self.navigationController?.pushViewController(mapController, animated: true)
-//        _ = mapController.view
-//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//        if let mapController = storyBoard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController {
-//            mapController.atm  = viewModel.getATM(atmId: atmId)
-//            self.navigationController?.pushViewController(mapController, animated: true)
-//            _ = mapController.view
-//        }
     }
 }
