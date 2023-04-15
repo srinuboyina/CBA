@@ -4,34 +4,60 @@ import UIKit
 
 class CBATransactionTableHeader: UITableViewHeaderFooterView {
 
+    var account: Account? {
+        didSet {
+            guard let accountData = account else {return}
+            accountAccessLbl.text = accountData.accountName
+            accountNumber.text = accountData.accountNumber
+            availableFundsValue.text = prepareAmountText(amount: accountData.available)
+            availableBalanceValue.text = prepareAmountText(amount: accountData.balance)
+        }
+    }
+    
+    func prepareAmountText(amount: Double) -> String {
+        var amt = String(format: "%.2f", amount)
+        var amountStr = "$\(amt)"
+        if amount < 0 {
+            amt = amt.replacingOccurrences(of: "-", with: "")
+            amountStr = "-$\(amt)"
+        }
+        return amountStr
+    }
+    
     let accountView: UIView = {
         let view = UIView()
-//        view.backgroundColor =
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
         return view
     }()
 
     let accountInfoView: UIView = {
         let view = UIView()
-//        view.backgroundColor =
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
         return view
     }()
 
     let walletImg : UIImageView = {
         let imgView = UIImageView()
-        imgView.contentMode = .center
+        imgView.image = UIImage(named: "accountsimagetransactional")
+        imgView.contentMode = .scaleAspectFit
+        imgView.translatesAutoresizingMaskIntoConstraints = false
+        imgView.layer.cornerRadius = 5
         return imgView
     }()
 
     let accountAccessLbl: UILabel = {
         let lbl = UILabel()
-//        lbl.textColor =
+        lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = Font.helveticaNeue_light18
         return lbl
     }()
 
     let accountNumber: UILabel = {
         let lbl = UILabel()
-//        lbl.textColor = 
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.textColor = UIColor(hexFromString: "878787")
         lbl.font = Font.helveticaNeue_light16
         return lbl
     }()
@@ -39,7 +65,7 @@ class CBATransactionTableHeader: UITableViewHeaderFooterView {
     let availableFunds: UILabel = {
         let lbl = UILabel()
         lbl.text = Constants.StringConstant.available_funds
-//        lbl.textColor =
+        lbl.textColor = UIColor(hexFromString: "878787")
         lbl.font = Font.helveticaNeue_light16
         lbl.textAlignment = .left
         return lbl
@@ -48,7 +74,7 @@ class CBATransactionTableHeader: UITableViewHeaderFooterView {
     let availableBalance: UILabel = {
         let lbl = UILabel()
         lbl.text = Constants.StringConstant.available_balance
-//        lbl.textColor =
+        lbl.textColor = UIColor(hexFromString: "878787")
         lbl.font = Font.helveticaNeue_light16
         lbl.textAlignment = .left
         return lbl
@@ -56,7 +82,6 @@ class CBATransactionTableHeader: UITableViewHeaderFooterView {
 
     let availableFundsValue: UILabel = {
         let lbl = UILabel()
-//        lbl.textColor =
         lbl.font = Font.helveticaNeue_Bold16
         lbl.textAlignment = .right
         return lbl
@@ -64,7 +89,7 @@ class CBATransactionTableHeader: UITableViewHeaderFooterView {
 
     let availableBalanceValue: UILabel = {
         let lbl = UILabel()
-//        lbl.textColor =
+        lbl.textColor = UIColor(hexFromString: "878787")
         lbl.font = Font.helveticaNeue_Bold16
         lbl.textAlignment = .right
         return lbl
@@ -80,48 +105,53 @@ class CBATransactionTableHeader: UITableViewHeaderFooterView {
     }
 
     private func configureViews() {
-//        contentView.backgroundColor = 
-
+        
         let placeholderStackView = UIStackView(arrangedSubviews: [accountView, accountInfoView])
-        placeholderStackView.distribution = .fillEqually
+        placeholderStackView.distribution = .fillProportionally
         placeholderStackView.axis = .vertical
         placeholderStackView.translatesAutoresizingMaskIntoConstraints = false
+        placeholderStackView.heightAnchor.constraint(equalToConstant:200).isActive = true
         contentView.addSubview(placeholderStackView)
-
+        contentView.layer.borderColor = UIColor(hexFromString: "8AB1B2").cgColor
+        contentView.layer.borderWidth = 15.0
         NSLayoutConstraint.activate([
-            placeholderStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            placeholderStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-            placeholderStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-            placeholderStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15)
+            placeholderStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            placeholderStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            placeholderStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+            placeholderStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0)
         ])
 
         let accountStack = UIStackView(arrangedSubviews: [accountAccessLbl, accountNumber])
-        accountStack.distribution = .fill
+        accountStack.distribution = .fillProportionally
         accountStack.axis = .vertical
-        accountStack.spacing = 5
         accountStack.translatesAutoresizingMaskIntoConstraints = false
-        walletImg.setContentHuggingPriority(UILayoutPriority.init(rawValue: 1000), for: .horizontal)
+        walletImg.widthAnchor.constraint(equalToConstant:50).isActive = true
+        walletImg.heightAnchor.constraint(equalToConstant:50).isActive = true
 
         let accountIconStack = UIStackView(arrangedSubviews: [walletImg, accountStack])
         accountIconStack.distribution = .fill
         accountIconStack.axis = .horizontal
-        accountIconStack.spacing = 25
+        accountIconStack.spacing = 15
         accountIconStack.translatesAutoresizingMaskIntoConstraints = false
+        accountIconStack.backgroundColor = .white
+        
+        accountIconStack.heightAnchor.constraint(equalToConstant:80).isActive = true
         accountView.addSubview(accountIconStack)
 
         NSLayoutConstraint.activate([
-            accountIconStack.leadingAnchor.constraint(equalTo: accountView.leadingAnchor, constant: 10),
-            accountIconStack.trailingAnchor.constraint(equalTo: accountView.trailingAnchor, constant: -10),
-            accountIconStack.topAnchor.constraint(equalTo: accountView.topAnchor, constant: 10),
-            accountIconStack.bottomAnchor.constraint(equalTo: accountView.bottomAnchor, constant: -15)
+            accountIconStack.leadingAnchor.constraint(equalTo: accountView.leadingAnchor, constant: 15),
+            accountIconStack.trailingAnchor.constraint(equalTo: accountView.trailingAnchor, constant: -15),
+            accountIconStack.topAnchor.constraint(equalTo: accountView.topAnchor, constant: 15),
+            accountIconStack.bottomAnchor.constraint(equalTo: accountView.bottomAnchor, constant: 0)
         ])
 
         let availableFundStack = UIStackView(arrangedSubviews: [availableFunds, availableFundsValue])
-        availableFundStack.distribution = .fillEqually
+        availableFundStack.distribution = .fillProportionally
         availableFundStack.axis = .horizontal
 
         let availableBalanceStack = UIStackView(arrangedSubviews: [availableBalance, availableBalanceValue])
-        availableBalanceStack.distribution = .fillEqually
+        availableBalanceStack.distribution = .fillProportionally
+        availableBalanceStack.alignment = .top
         availableBalanceStack.axis = .horizontal
 
         let accountInfoViewStack = UIStackView(arrangedSubviews: [availableFundStack, availableBalanceStack])
@@ -131,19 +161,10 @@ class CBATransactionTableHeader: UITableViewHeaderFooterView {
         accountInfoView.addSubview(accountInfoViewStack)
 
         NSLayoutConstraint.activate([
-            accountInfoViewStack.leadingAnchor.constraint(equalTo: accountInfoView.leadingAnchor, constant: 75),
-            accountInfoViewStack.topAnchor.constraint(equalTo: accountInfoView.topAnchor, constant: 5),
-            accountInfoViewStack.trailingAnchor.constraint(equalTo: accountInfoView.trailingAnchor, constant: -25),
-            accountInfoViewStack.bottomAnchor.constraint(equalTo: accountInfoView.bottomAnchor, constant: -5),
+            accountInfoViewStack.leadingAnchor.constraint(equalTo: accountInfoView.leadingAnchor, constant: 80),
+            accountInfoViewStack.topAnchor.constraint(equalTo: accountInfoView.topAnchor, constant: 0),
+            accountInfoViewStack.trailingAnchor.constraint(equalTo: accountInfoView.trailingAnchor, constant: -40),
+            accountInfoViewStack.bottomAnchor.constraint(equalTo: accountInfoView.bottomAnchor, constant: 0),
         ])
-    }
-
-    func updateAccountDetails(account: Account?) {
-        if let accountData = account {
-            accountAccessLbl.text = accountData.accountName
-            accountNumber.text = accountData.accountNumber
-            availableFundsValue.text = ""
-            availableBalanceValue.text = ""
-        }
     }
 }

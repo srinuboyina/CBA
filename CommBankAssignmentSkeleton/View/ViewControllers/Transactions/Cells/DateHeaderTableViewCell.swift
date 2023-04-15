@@ -13,7 +13,7 @@ class DateHeaderTableViewCell: UITableViewHeaderFooterView {
     @IBOutlet weak var transactionDateDescriptionLabel: UILabel!
  
     func updateDateDatails(dateViewModel: DateViewModel) {
-        transactionDateLabel.text = dateViewModel.date
+        transactionDateLabel.text = dateViewModel.dateInFormat
         transactionDateDescriptionLabel.text = dateViewModel.dateDetail
     }
 }
