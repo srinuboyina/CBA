@@ -2,6 +2,8 @@
 
 import XCTest
 
+
+
 class CommBankAssignmentSkeletonUITests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -21,7 +23,21 @@ class CommBankAssignmentSkeletonUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+        let tableView =  app.tables["TransactionsTableView"]
+        if tableView.waitForExistence(timeout: 10) {
+            if tableView.cells["Map"].waitForExistence(timeout: 1) {
+                let button = app.buttons["Map button"].firstMatch
+                if  button.exists {
+                    button.tap()
+                    let backButton  = app.buttons["Account Details"]
+                    if backButton.waitForExistence(timeout: 10) {
+                        backButton.tap()
+                    }
+                }
+            }
+        }
 
+        
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

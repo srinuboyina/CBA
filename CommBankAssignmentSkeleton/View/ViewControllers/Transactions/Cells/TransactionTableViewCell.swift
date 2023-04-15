@@ -26,6 +26,8 @@ class TransactionTableViewCell: UITableViewCell {
         self.transactionAmountLabel.text = viewModel.amount
         self.transactionDetailsLabel.attributedText = viewModel.getDescription()
         if let _ = viewModel.atmId {
+            self.accessibilityLabel = "Map"
+            locationButton.accessibilityLabel =  "Map button"
             locationButton.isHidden  = false
             widthConstraint.constant = 16
         } else {

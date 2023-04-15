@@ -14,6 +14,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Map"
+        self.accessibilityLabel = "Map View"
         map.delegate = self
         addAnnotation(atm: atm)
     }

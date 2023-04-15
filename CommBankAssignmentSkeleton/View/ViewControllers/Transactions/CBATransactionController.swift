@@ -3,13 +3,11 @@
 import UIKit
 
 class CBATransactionController: UIViewController {
-    
     var tableView: UITableView = UITableView(frame: .zero, style: .grouped)
     var viewModel: TransactionsViewModelProtocol = TransactionsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(tableView)
         self.title = "Account Details"
         setupTableView()
         registerCells()
@@ -20,6 +18,7 @@ class CBATransactionController: UIViewController {
     }
     
     private func setupTableView() {
+        view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
@@ -29,6 +28,7 @@ class CBATransactionController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.sectionFooterHeight = 0.1
+        tableView.accessibilityLabel = "TransactionsTableView"
     }
     
     private func registerCells() {
