@@ -11,17 +11,23 @@ protocol TransactionsViewModelProtocol {
     var network: Network! { get set }
     var accountData: AccountDetail? { get set }
     func getTrransactions( completionHandler: @escaping (() -> Void))
-    func getRowsCount() -> Int
-    func getTransactionViewModel(index: Int) -> TransactionViewModel
+    func getSectionsCount() -> Int
+    func getRowsCount(section: Int) -> Int
+    func getDateViewModel(section: Int) -> DateViewModel
+    func getTransactionViewModel(indexPath: IndexPath) -> TransactionViewModel
     func getAccountViewModel() -> AccountViewModel
     func getATM(atmId: String) -> ATM
     func groupTransactionsByDate()
+    var groupedTransactions: [String: [Transaction]] {get set}
+    func groupPendingTransactionsByDate()
+    var groupedPendingTransactions: [String: [Transaction]] {get set}
 }
 
 class TransactionsViewModel: TransactionsViewModelProtocol {
     var network: Network!
     internal var accountData: AccountDetail?
     var groupedTransactions: [String: [Transaction]]  = [:]
+    var groupedPendingTransactions: [String: [Transaction]] = [:]
     
     init(network: Network = NetworkManager()) {
         self.network = network
@@ -30,7 +36,9 @@ class TransactionsViewModel: TransactionsViewModelProtocol {
     func getTrransactions( completionHandler: @escaping (() -> Void)) {
         network.fetchApiData(urlString: network.apiUrl) { [weak self] trans, error in
             self?.accountData = trans
-            self?.sortTransactionByDate()
+            //self?.sortTransactionByDate()
+            self?.groupTransactionsByDate()
+            self?.groupPendingTransactionsByDate()
             completionHandler()
         }
     }
@@ -55,19 +63,42 @@ class TransactionsViewModel: TransactionsViewModelProtocol {
         })
     }
     
-    func getTransactionViewModel(index: Int) -> TransactionViewModel {
-        guard let accountData = self.accountData else { return  TransactionViewModel(transaction: Transaction(id: "", description: "", effectiveDate: "", amount: 0, atmId: ""))}
-        if index < accountData.pending.count {
-            let transaction = accountData.pending[index]
-            return PendingTransactionViewModel(transaction: transaction)
+    func getTransactionViewModel(indexPath: IndexPath) -> TransactionViewModel {
+        if indexPath.section <= groupedPendingTransactions.count {
+            let keys = groupedPendingTransactions.map({ $0.key })
+            let key = keys[indexPath.section - 1]
+            if let transactions = groupedPendingTransactions[key]  {
+                let transaction = transactions[indexPath.row]
+                return PendingTransactionViewModel(transaction: transaction)
+            }
         } else {
-            let transaction = accountData.transactions[index]
-            return TransactionViewModel(transaction: transaction)
+            let keys = groupedTransactions.map({ $0.key })
+            let key = keys[indexPath.section - groupedPendingTransactions.count - 1]
+            if let transactions =  groupedTransactions[key]  {
+                let transaction  = transactions[indexPath.row]
+                return TransactionViewModel(transaction: transaction)
+            }
         }
+        return TransactionViewModel(transaction: Transaction(id: "9a899bfd978511e9605774e1d5222b67", description: "Savings", effectiveDate: "19/12/2015", amount: -10.00, atmId: ""))
     }
     
-    func getRowsCount() -> Int {
-        return accountData?.transactions.count ?? 0  + (accountData?.pending.count ?? 0)
+    func getSectionsCount() -> Int {
+        return groupedPendingTransactions.count  + groupedTransactions.count + 1
+    }
+    
+    func getRowsCount(section: Int) -> Int {
+        if section == 0 {
+            return 0
+        }
+        if section <= groupedPendingTransactions.count {
+            let keys = groupedPendingTransactions.map({ $0.key })
+            let key = keys[section - 1]
+            return groupedPendingTransactions[key]?.count ?? 0
+        } else {
+            let keys = groupedTransactions.map({ $0.key })
+            let key = keys[section - groupedPendingTransactions.count - 1]
+            return groupedTransactions[key]?.count ?? 0
+        }
     }
     
     func getAccountViewModel() -> AccountViewModel {
@@ -86,14 +117,38 @@ class TransactionsViewModel: TransactionsViewModelProtocol {
     
     func groupTransactionsByDate()  {
         guard let accountData = self.accountData else { return }
-        let datesArray = accountData.transactions.map { $0.effectiveDate }
+        self.groupedTransactions = groupByDate(transactions: accountData.transactions)
+    }
+    
+    func groupPendingTransactionsByDate() {
+        guard let accountData = self.accountData else { return }
+        self.groupedPendingTransactions = groupByDate(transactions: accountData.pending)
+    }
+    
+    private func groupByDate(transactions: [Transaction]) -> [String: [Transaction]] {
+        let datesArray = transactions.map { $0.effectiveDate }
         var dic = [String:[Transaction]]()
         datesArray.forEach {
             let dateKey = $0
-            let filterArray = accountData.transactions.filter { $0.effectiveDate == dateKey }
+            let filterArray = transactions.filter { $0.effectiveDate == dateKey }
             dic[$0] = filterArray
         }
-        self.groupedTransactions = dic
+        return dic
+    }
+    
+    func getDateViewModel(section: Int) -> DateViewModel {
+        var date: String = ""
+        if section == 0 {
+            return DateViewModel(date: date)
+        }
+        if section <= groupedPendingTransactions.count {
+            let keys = groupedPendingTransactions.map({ $0.key })
+            date = keys[section - 1]
+        } else {
+            let keys = groupedTransactions.map({ $0.key })
+            date = keys[section - groupedPendingTransactions.count - 1]
+        }
+        return DateViewModel(date: date)
     }
 }
 

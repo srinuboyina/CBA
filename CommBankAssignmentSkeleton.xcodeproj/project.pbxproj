@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1893361329EA6888009DAB2B /* DateHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361129EA6888009DAB2B /* DateHeaderTableViewCell.swift */; };
+		1893361429EA6888009DAB2B /* DateHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1893361229EA6888009DAB2B /* DateHeaderTableViewCell.xib */; };
+		1893361629EA6FEE009DAB2B /* DateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361529EA6FEE009DAB2B /* DateViewModel.swift */; };
 		18AFE7A029E953B90023ACB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18AFE79F29E953B80023ACB7 /* Main.storyboard */; };
 		18AFE7A229E954640023ACB7 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7A129E954640023ACB7 /* TransactionsViewModel.swift */; };
 		18AFE7A529E9595D0023ACB7 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7A329E9595D0023ACB7 /* TransactionTableViewCell.swift */; };
@@ -61,6 +64,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1893361129EA6888009DAB2B /* DateHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		1893361229EA6888009DAB2B /* DateHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		1893361529EA6FEE009DAB2B /* DateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModel.swift; sourceTree = "<group>"; };
 		18AFE79F29E953B80023ACB7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		18AFE7A129E954640023ACB7 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
 		18AFE7A329E9595D0023ACB7 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 				18AFE7A729E960290023ACB7 /* TransactionViewModel.swift */,
 				18AFE7F029E97E880023ACB7 /* PendingTransactionViewModel.swift */,
 				18F8ADCC29E9C3500042AD83 /* AccountViewModel.swift */,
+				1893361529EA6FEE009DAB2B /* DateViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -177,6 +184,8 @@
 				18AFE7A429E9595D0023ACB7 /* TransactionTableViewCell.xib */,
 				18F8ADBE29E9A3250042AD83 /* TransactionHeaderCell.swift */,
 				18F8ADBF29E9A3250042AD83 /* TransactionHeaderCell.xib */,
+				1893361129EA6888009DAB2B /* DateHeaderTableViewCell.swift */,
+				1893361229EA6888009DAB2B /* DateHeaderTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -388,6 +397,7 @@
 			files = (
 				18AFE7A029E953B90023ACB7 /* Main.storyboard in Resources */,
 				CD8C4C6528744C5E0056D371 /* iOS.Transactions.scrolling.png in Resources */,
+				1893361429EA6888009DAB2B /* DateHeaderTableViewCell.xib in Resources */,
 				CD8C4C6428744C5E0056D371 /* iOS.Transactions.png in Resources */,
 				18F8ADC129E9A3250042AD83 /* TransactionHeaderCell.xib in Resources */,
 				CD8C4C322874350C0056D371 /* LaunchScreen.storyboard in Resources */,
@@ -426,10 +436,12 @@
 				18F8ADCD29E9C3500042AD83 /* AccountViewModel.swift in Sources */,
 				CD8C4C5C28743D5D0056D371 /* AccountDetailsHeader.swift in Sources */,
 				18F8ADC029E9A3250042AD83 /* TransactionHeaderCell.swift in Sources */,
+				1893361329EA6888009DAB2B /* DateHeaderTableViewCell.swift in Sources */,
 				18F8ADC729E9AE030042AD83 /* ErrorModel.swift in Sources */,
 				CD8C4C2A2874350A0056D371 /* CBATransactionController.swift in Sources */,
 				18AFE7F429E98F790023ACB7 /* MapViewController.swift in Sources */,
 				CD8C4C262874350A0056D371 /* AppDelegate.swift in Sources */,
+				1893361629EA6FEE009DAB2B /* DateViewModel.swift in Sources */,
 				CD8C4C282874350A0056D371 /* SceneDelegate.swift in Sources */,
 				18F8ADC929E9B0FB0042AD83 /* MockNetworkManager.swift in Sources */,
 				18AFE7A529E9595D0023ACB7 /* TransactionTableViewCell.swift in Sources */,

@@ -28,21 +28,26 @@ class CBATransactionController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.sectionFooterHeight = 0.1
     }
     
     private func registerCells() {
         tableView.register(UINib(nibName: "TransactionTableViewCell", bundle: nil), forCellReuseIdentifier: "TransactionTableViewCell")
         tableView.register(UINib(nibName: "TransactionHeaderCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "TransactionHeaderCell")
+        tableView.register(UINib(nibName: "DateHeaderTableViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "DateHeaderTableViewCell")
     }
 }
 
 extension CBATransactionController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.getSectionsCount()
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.getRowsCount()
+        return viewModel.getRowsCount(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let transViewModel: TransactionViewModel = viewModel.getTransactionViewModel(index: indexPath.row)
+        let transViewModel: TransactionViewModel = viewModel.getTransactionViewModel(indexPath: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell") as? TransactionTableViewCell
         cell?.delegate = self
         cell?.updateTransactionDetail(viewModel: transViewModel)
@@ -50,15 +55,23 @@ extension CBATransactionController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TransactionHeaderCell") as? TransactionHeaderCell {
+        if section == 0, let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TransactionHeaderCell") as? TransactionHeaderCell {
             header.updateAccountDetails(account: viewModel.getAccountViewModel())
+            return header
+        } else if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "DateHeaderTableViewCell") as? DateHeaderTableViewCell {
+            let viewModel = viewModel.getDateViewModel(section: section)
+            header.updateDateDatails(dateViewModel: viewModel)
             return header
         }
         return UIView()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return Constants.TableConstants.headerHeight
+        if section == 0 {
+            return Constants.TransactionsTableViewConstants.headerHeight
+        } else {
+            return Constants.TransactionsTableViewConstants.dateHeaderHeight
+        }
     }
     
 }

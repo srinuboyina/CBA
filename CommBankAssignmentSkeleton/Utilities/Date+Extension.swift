@@ -19,3 +19,15 @@ extension Date {
         return (month: month, day: day, hour: hour, minute: minute, second: second)
     }
 }
+
+class Utilities {
+    static func prepareDayDescription(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        if let dateObj = dateFormatter.date(from: date) {
+            let difference =  Date() - dateObj
+            return "\(String(describing: difference.day!)) Days Ago"
+        }
+        return ""
+    }
+}

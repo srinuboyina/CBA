@@ -14,7 +14,8 @@ enum Constants {
         static let available_balance = "Available Balance"
     }
     
-    enum TableConstants {
+    enum TransactionsTableViewConstants {
         static let headerHeight: CGFloat = 200
+        static let dateHeaderHeight: CGFloat = 30
     }
 }

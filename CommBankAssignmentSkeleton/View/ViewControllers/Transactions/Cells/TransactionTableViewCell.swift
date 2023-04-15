@@ -15,8 +15,6 @@ class TransactionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var transactionDetailsLabel: UILabel!
     @IBOutlet weak var transactionAmountLabel: UILabel!
-    @IBOutlet weak var transactionDateLabel: UILabel!
-    @IBOutlet weak var transactionDateDescriptionLabel: UILabel!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     
@@ -27,8 +25,6 @@ class TransactionTableViewCell: UITableViewCell {
         self.viewModel = viewModel
         self.transactionAmountLabel.text = viewModel.amount
         self.transactionDetailsLabel.attributedText = viewModel.getDescription()
-        self.transactionDateLabel.text = viewModel.date
-        self.transactionDateDescriptionLabel.text = viewModel.dateDescription
         if let _ = viewModel.atmId {
             locationButton.isHidden  = false
             widthConstraint.constant = 16

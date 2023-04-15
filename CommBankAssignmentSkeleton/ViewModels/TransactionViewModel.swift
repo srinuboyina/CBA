@@ -30,21 +30,11 @@ class TransactionViewModel {
             self.amount = "-$" + String(abs(transaction.amount))
         }
         self.date = transaction.effectiveDate
-        self.dateDescription = ""
-        prepareDayDescription(date: transaction.effectiveDate)
+        self.dateDescription = Utilities.prepareDayDescription(date: transaction.effectiveDate)
         self.atmId = transaction.atmId
     }
     
     func getDescription() -> NSAttributedString {
         return NSAttributedString(string: transaction.description)
-    }
-    
-    private func prepareDayDescription(date: String)  {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        if let dateObj = dateFormatter.date(from: date) {
-            let difference =  Date() - dateObj
-            self.dateDescription = "\(String(describing: difference.day!)) Days Ago"
-        }
     }
 }
