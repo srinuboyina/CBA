@@ -12,7 +12,6 @@
 		1893361A29EA9EC7009DAB2B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361929EA9EC7009DAB2B /* UIColor+Extension.swift */; };
 		1893361C29EAA8FE009DAB2B /* DateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */; };
 		1893361E29EAB4C5009DAB2B /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361D29EAB4C5009DAB2B /* UIViewController + Extension.swift */; };
-		18AFE7A029E953B90023ACB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18AFE79F29E953B80023ACB7 /* Main.storyboard */; };
 		18AFE7A229E954640023ACB7 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7A129E954640023ACB7 /* TransactionsViewModel.swift */; };
 		18AFE7A529E9595D0023ACB7 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7A329E9595D0023ACB7 /* TransactionTableViewCell.swift */; };
 		18AFE7A829E960290023ACB7 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7A729E960290023ACB7 /* TransactionViewModel.swift */; };
@@ -21,6 +20,8 @@
 		18AFE7B029E96BD90023ACB7 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7AF29E96BD90023ACB7 /* Date+Extension.swift */; };
 		18AFE7F129E97E880023ACB7 /* PendingTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7F029E97E880023ACB7 /* PendingTransactionViewModel.swift */; };
 		18AFE7F429E98F790023ACB7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7F329E98F790023ACB7 /* MapViewController.swift */; };
+		18B7DB8229EBCDF800034B1E /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B7DB8129EBCDF800034B1E /* MapViewControllerTests.swift */; };
+		18B7DB8429EBCF7100034B1E /* CBATransactionControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B7DB8329EBCF7100034B1E /* CBATransactionControllerTests.swift */; };
 		18F8ADC529E9AD820042AD83 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8ADC429E9AD820042AD83 /* NetworkManager.swift */; };
 		18F8ADC729E9AE030042AD83 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8ADC629E9AE030042AD83 /* ErrorModel.swift */; };
 		18F8ADC929E9B0FB0042AD83 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8ADC829E9B0FB0042AD83 /* MockNetworkManager.swift */; };
@@ -68,7 +69,6 @@
 		1893361929EA9EC7009DAB2B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModelTests.swift; sourceTree = "<group>"; };
 		1893361D29EAB4C5009DAB2B /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
-		18AFE79F29E953B80023ACB7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		18AFE7A129E954640023ACB7 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
 		18AFE7A329E9595D0023ACB7 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		18AFE7A729E960290023ACB7 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
@@ -77,6 +77,8 @@
 		18AFE7AF29E96BD90023ACB7 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		18AFE7F029E97E880023ACB7 /* PendingTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTransactionViewModel.swift; sourceTree = "<group>"; };
 		18AFE7F329E98F790023ACB7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		18B7DB8129EBCDF800034B1E /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
+		18B7DB8329EBCF7100034B1E /* CBATransactionControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBATransactionControllerTests.swift; sourceTree = "<group>"; };
 		18F8ADC429E9AD820042AD83 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		18F8ADC629E9AE030042AD83 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		18F8ADC829E9B0FB0042AD83 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
@@ -251,7 +253,6 @@
 				CD8C4C2E2874350C0056D371 /* Assets.xcassets */,
 				CD8C4C302874350C0056D371 /* LaunchScreen.storyboard */,
 				CD8C4C332874350C0056D371 /* Info.plist */,
-				18AFE79F29E953B80023ACB7 /* Main.storyboard */,
 			);
 			path = CommBankAssignmentSkeleton;
 			sourceTree = "<group>";
@@ -265,6 +266,8 @@
 				18F8ADCA29E9BD080042AD83 /* PendingTransactionViewModelTests.swift */,
 				18F8ADCE29E9C8FF0042AD83 /* AccountViewModelTests.swift */,
 				1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */,
+				18B7DB8129EBCDF800034B1E /* MapViewControllerTests.swift */,
+				18B7DB8329EBCF7100034B1E /* CBATransactionControllerTests.swift */,
 			);
 			path = CommBankAssignmentSkeletonTests;
 			sourceTree = "<group>";
@@ -392,7 +395,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18AFE7A029E953B90023ACB7 /* Main.storyboard in Resources */,
 				CD8C4C6528744C5E0056D371 /* iOS.Transactions.scrolling.png in Resources */,
 				CD8C4C6428744C5E0056D371 /* iOS.Transactions.png in Resources */,
 				CD8C4C322874350C0056D371 /* LaunchScreen.storyboard in Resources */,
@@ -451,6 +453,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B7DB8229EBCDF800034B1E /* MapViewControllerTests.swift in Sources */,
+				18B7DB8429EBCF7100034B1E /* CBATransactionControllerTests.swift in Sources */,
 				CD8C4C3D2874350C0056D371 /* CommBankAssignmentSkeletonTests.swift in Sources */,
 				18AFE7AD29E9683F0023ACB7 /* TransactionsViewModelTests.swift in Sources */,
 				18AFE7AB29E968290023ACB7 /* TransactionViewModelTests.swift in Sources */,
