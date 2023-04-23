@@ -14,9 +14,9 @@ protocol TransactionsViewModelProtocol {
     func getSectionsCount() -> Int
     func getRowsCount(section: Int) -> Int
     func getDateViewModel(section: Int) -> DateViewModel
-    func getTransactionViewModel(indexPath: IndexPath) -> TransactionViewModel
-    func getAccountViewModel() -> AccountViewModel
-    func getATM(atmId: String) -> ATM
+    func getTransactionViewModel(indexPath: IndexPath) -> TransactionViewModel?
+    func getAccountViewModel() -> AccountViewModel?
+    func getATM(atmId: String) -> ATM?
     func groupTransactionsByDate()
     var groupedTransactions: [String: [Transaction]] {get set}
     func groupPendingTransactionsByDate()
@@ -29,14 +29,16 @@ class TransactionsViewModel: TransactionsViewModelProtocol {
     var groupedTransactions: [String: [Transaction]]  = [:]
     var groupedPendingTransactions: [String: [Transaction]] = [:]
     
+    let dateFormatter = DateFormatter()
+    
     init(network: Network = NetworkManager()) {
         self.network = network
+        dateFormatter.dateFormat = "dd/MM/yyyy"
     }
     
-    func getTrransactions( completionHandler: @escaping (() -> Void)) {
+    func getTrransactions(completionHandler: @escaping (() -> Void)) {
         network.fetchApiData(urlString: network.apiUrl) { [weak self] trans, error in
             self?.accountData = trans
-            //self?.sortTransactionByDate()
             self?.groupTransactionsByDate()
             self?.groupPendingTransactionsByDate()
             completionHandler()
@@ -44,8 +46,6 @@ class TransactionsViewModel: TransactionsViewModelProtocol {
     }
     
     private func sortTransactionByDate()  {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
         accountData?.transactions.sort(by: { tran1, tran2 in
             if let date1 =  dateFormatter.date(from: tran1.effectiveDate),
                 let date2 =  dateFormatter.date(from: tran2.effectiveDate) {
@@ -63,23 +63,27 @@ class TransactionsViewModel: TransactionsViewModelProtocol {
         })
     }
     
-    func getTransactionViewModel(indexPath: IndexPath) -> TransactionViewModel {
+    func getTransactionViewModel(indexPath: IndexPath) -> TransactionViewModel? {
         if indexPath.section <= groupedPendingTransactions.count {
-            let keys = groupedPendingTransactions.map({ $0.key })
+            let keys = groupedPendingTransactions.map({ $0.key }).sorted { key1, key2 in
+                dateFormatter.date(from:key1)!.compare(dateFormatter.date(from:key2)!) == .orderedDescending
+            }
             let key = keys[indexPath.section - 1]
             if let transactions = groupedPendingTransactions[key]  {
                 let transaction = transactions[indexPath.row]
                 return PendingTransactionViewModel(transaction: transaction)
             }
         } else {
-            let keys = groupedTransactions.map({ $0.key })
+            let keys = groupedTransactions.map({ $0.key }).sorted { key1, key2 in
+                dateFormatter.date(from:key1)!.compare(dateFormatter.date(from:key2)!) == .orderedDescending
+            }
             let key = keys[indexPath.section - groupedPendingTransactions.count - 1]
-            if let transactions =  groupedTransactions[key]  {
-                let transaction  = transactions[indexPath.row]
+            if let transactions = groupedTransactions[key]  {
+                let transaction = transactions[indexPath.row]
                 return TransactionViewModel(transaction: transaction)
             }
         }
-        return TransactionViewModel(transaction: Transaction(id: "9a899bfd978511e9605774e1d5222b67", description: "Savings", effectiveDate: "19/12/2015", amount: -10.00, atmId: ""))
+        return nil
     }
     
     func getSectionsCount() -> Int {
@@ -91,28 +95,34 @@ class TransactionsViewModel: TransactionsViewModelProtocol {
             return 0
         }
         if section <= groupedPendingTransactions.count {
-            let keys = groupedPendingTransactions.map({ $0.key })
+            let keys = groupedPendingTransactions.map({ $0.key }).sorted { key1, key2 in
+                dateFormatter.date(from:key1)!.compare(dateFormatter.date(from:key2)!) == .orderedDescending
+            }
             let key = keys[section - 1]
             return groupedPendingTransactions[key]?.count ?? 0
         } else {
-            let keys = groupedTransactions.map({ $0.key })
+            let keys = groupedTransactions.map({ $0.key }).sorted { key1, key2 in
+                dateFormatter.date(from:key1)!.compare(dateFormatter.date(from:key2)!) == .orderedDescending
+            }
             let key = keys[section - groupedPendingTransactions.count - 1]
             return groupedTransactions[key]?.count ?? 0
         }
     }
     
-    func getAccountViewModel() -> AccountViewModel {
-        let account = accountData?.account ??  Account(accountName: "", accountNumber: "", available: 0, balance: 0)
-        return AccountViewModel(account: account)
+    func getAccountViewModel() -> AccountViewModel? {
+        if let account = accountData?.account {
+            return AccountViewModel(account: account)
+        }
+        return nil
     }
     
-    func getATM(atmId: String) -> ATM  {
+    func getATM(atmId: String) -> ATM?  {
         if let atm =  accountData?.atms.first(where: { atm in
             return atm.id ==   atmId
         }) {
             return  atm
         }
-        return ATM(id: "", name: "", address: "", location: Location(lat: 0, lng: 0))
+        return nil
     }
     
     func groupTransactionsByDate()  {
@@ -136,16 +146,29 @@ class TransactionsViewModel: TransactionsViewModelProtocol {
         return dic
     }
     
+    func sortWithKeys(_ dict: [String: [Transaction]]) -> [String: [Transaction]] {
+        let sorted = dict.sorted(by: { dateFormatter.date(from:$0.key)!.compare(dateFormatter.date(from:$1.key)!) == .orderedDescending })
+        var newDict: [String: [Transaction]] = [:]
+        for sortedDict in sorted {
+            newDict[sortedDict.key] = sortedDict.value
+        }
+        return newDict
+    }
+    
     func getDateViewModel(section: Int) -> DateViewModel {
         var date: String = ""
         if section == 0 {
             return DateViewModel(date: date)
         }
         if section <= groupedPendingTransactions.count {
-            let keys = groupedPendingTransactions.map({ $0.key })
+            let keys = groupedPendingTransactions.map({ $0.key }).sorted { key1, key2 in
+                dateFormatter.date(from:key1)!.compare(dateFormatter.date(from:key2)!) == .orderedDescending
+            }
             date = keys[section - 1]
         } else {
-            let keys = groupedTransactions.map({ $0.key })
+            let keys = groupedTransactions.map({ $0.key }).sorted { key1, key2 in
+                dateFormatter.date(from:key1)!.compare(dateFormatter.date(from:key2)!) == .orderedDescending
+            }
             date = keys[section - groupedPendingTransactions.count - 1]
         }
         return DateViewModel(date: date)

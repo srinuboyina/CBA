@@ -12,8 +12,8 @@ final class CBATransactionControllerTests: XCTestCase {
     
     var controller: CBATransactionController!
     override func setUp() {
-        controller = CBATransactionController()
-        controller.loadViewIfNeeded()
+        controller = CBATransactionController(viewModel: TransactionsViewModelStub())
+        controller.viewDidLoad()
     }
     
     func testDatasource() {
@@ -36,6 +36,13 @@ final class CBATransactionControllerTests: XCTestCase {
         let view = controller.tableView(controller.tableView, viewForHeaderInSection: 0)
         XCTAssert(view is CBATransactionTableHeader)
     }
+    
+    func testTableViewDateHeader(){
+        if controller.viewModel.groupedTransactions.count > 0, let view = controller.tableView(controller.tableView, viewForHeaderInSection: 1) {
+            XCTAssert(view is DateHeaderTableViewCell)
+        }
+    }
+
     
     func testTableViewZCell(){
         if controller.viewModel.groupedTransactions.count > 0 && controller.tableView.numberOfRows(inSection: 1) > 0  {

@@ -4,7 +4,17 @@ import UIKit
 
 class CBATransactionController: UIViewController {
     var tableView: UITableView = UITableView(frame: .zero, style: .grouped)
-    var viewModel: TransactionsViewModelProtocol = TransactionsViewModel()
+    var viewModel: TransactionsViewModelProtocol!
+    
+    init(viewModel: TransactionsViewModelProtocol = TransactionsViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        return nil
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,17 +57,19 @@ extension CBATransactionController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let transViewModel: TransactionViewModel = viewModel.getTransactionViewModel(indexPath: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell") as? TransactionTableViewCell
-        cell?.delegate = self
-        cell?.updateTransactionDetail(viewModel: transViewModel)
-        return cell ?? UITableViewCell()
+        if  let transViewModel: TransactionViewModel = viewModel.getTransactionViewModel(indexPath: indexPath) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell") as? TransactionTableViewCell
+            cell?.delegate = self
+            cell?.updateTransactionDetail(viewModel: transViewModel)
+            return cell ?? UITableViewCell()
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CBATransactionTableHeader") as? CBATransactionTableHeader  {
-                headerView.updateAccountDetails(account: viewModel.getAccountViewModel())
+            if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CBATransactionTableHeader") as? CBATransactionTableHeader, let viewModel = viewModel.getAccountViewModel()  {
+                headerView.updateAccountDetails(account: viewModel)
                 return headerView
             }
         } else if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "DateHeaderTableViewCell") as? DateHeaderTableViewCell {

@@ -6,6 +6,7 @@ enum Constants {
     enum ApiConstant {
         //Api endpoint to get the the transaction response
         static let transactionsUrl = "https://www.dropbox.com/s/tewg9b71x0wrou9/data.json?dl=1"
+        static let mockPath = Bundle.main.path(forResource: "sample", ofType: "json")
     }
     
     enum StringConstant {

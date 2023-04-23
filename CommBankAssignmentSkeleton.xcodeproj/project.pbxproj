@@ -12,6 +12,11 @@
 		1893361A29EA9EC7009DAB2B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361929EA9EC7009DAB2B /* UIColor+Extension.swift */; };
 		1893361C29EAA8FE009DAB2B /* DateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */; };
 		1893361E29EAB4C5009DAB2B /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893361D29EAB4C5009DAB2B /* UIViewController + Extension.swift */; };
+		18A042E229F51906001941C2 /* TransactionsViewModelStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A042E129F51906001941C2 /* TransactionsViewModelStub.swift */; };
+		18A042E729F51B6B001941C2 /* TransactionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A042E429F51B6B001941C2 /* TransactionBuilder.swift */; };
+		18A042E829F51B6B001941C2 /* ATMBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A042E529F51B6B001941C2 /* ATMBuilder.swift */; };
+		18A042E929F51B6B001941C2 /* AccountDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A042E629F51B6B001941C2 /* AccountDetailBuilder.swift */; };
+		18A042ED29F52CAC001941C2 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A042EC29F52CAC001941C2 /* NetworkTests.swift */; };
 		18AFE7A229E954640023ACB7 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7A129E954640023ACB7 /* TransactionsViewModel.swift */; };
 		18AFE7A529E9595D0023ACB7 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7A329E9595D0023ACB7 /* TransactionTableViewCell.swift */; };
 		18AFE7A829E960290023ACB7 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE7A729E960290023ACB7 /* TransactionViewModel.swift */; };
@@ -69,6 +74,11 @@
 		1893361929EA9EC7009DAB2B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModelTests.swift; sourceTree = "<group>"; };
 		1893361D29EAB4C5009DAB2B /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
+		18A042E129F51906001941C2 /* TransactionsViewModelStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModelStub.swift; sourceTree = "<group>"; };
+		18A042E429F51B6B001941C2 /* TransactionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionBuilder.swift; sourceTree = "<group>"; };
+		18A042E529F51B6B001941C2 /* ATMBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATMBuilder.swift; sourceTree = "<group>"; };
+		18A042E629F51B6B001941C2 /* AccountDetailBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailBuilder.swift; sourceTree = "<group>"; };
+		18A042EC29F52CAC001941C2 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		18AFE7A129E954640023ACB7 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
 		18AFE7A329E9595D0023ACB7 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		18AFE7A729E960290023ACB7 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
@@ -132,6 +142,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18A042DE29F513A8001941C2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				18AFE7AA29E968290023ACB7 /* TransactionViewModelTests.swift */,
+				18AFE7AC29E9683F0023ACB7 /* TransactionsViewModelTests.swift */,
+				18F8ADCA29E9BD080042AD83 /* PendingTransactionViewModelTests.swift */,
+				18F8ADCE29E9C8FF0042AD83 /* AccountViewModelTests.swift */,
+				1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		18A042DF29F513CA001941C2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		18A042E029F518ED001941C2 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				18A042E129F51906001941C2 /* TransactionsViewModelStub.swift */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
+		18A042E329F51ADB001941C2 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				18A042E629F51B6B001941C2 /* AccountDetailBuilder.swift */,
+				18A042E529F51B6B001941C2 /* ATMBuilder.swift */,
+				18A042E429F51B6B001941C2 /* TransactionBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		18A042EA29F52C41001941C2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				18B7DB8129EBCDF800034B1E /* MapViewControllerTests.swift */,
+				18B7DB8329EBCF7100034B1E /* CBATransactionControllerTests.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		18A042EB29F52C55001941C2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				18A042EC29F52CAC001941C2 /* NetworkTests.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		18AFE79A29E952D50023ACB7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,14 +324,13 @@
 		CD8C4C3B2874350C0056D371 /* CommBankAssignmentSkeletonTests */ = {
 			isa = PBXGroup;
 			children = (
+				18A042EB29F52C55001941C2 /* Network */,
+				18A042EA29F52C41001941C2 /* Controllers */,
+				18A042E329F51ADB001941C2 /* Builder */,
+				18A042E029F518ED001941C2 /* Stubs */,
+				18A042DF29F513CA001941C2 /* Views */,
+				18A042DE29F513A8001941C2 /* ViewModels */,
 				CD8C4C3C2874350C0056D371 /* CommBankAssignmentSkeletonTests.swift */,
-				18AFE7AA29E968290023ACB7 /* TransactionViewModelTests.swift */,
-				18AFE7AC29E9683F0023ACB7 /* TransactionsViewModelTests.swift */,
-				18F8ADCA29E9BD080042AD83 /* PendingTransactionViewModelTests.swift */,
-				18F8ADCE29E9C8FF0042AD83 /* AccountViewModelTests.swift */,
-				1893361B29EAA8FE009DAB2B /* DateViewModelTests.swift */,
-				18B7DB8129EBCDF800034B1E /* MapViewControllerTests.swift */,
-				18B7DB8329EBCF7100034B1E /* CBATransactionControllerTests.swift */,
 			);
 			path = CommBankAssignmentSkeletonTests;
 			sourceTree = "<group>";
@@ -453,11 +516,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A042E229F51906001941C2 /* TransactionsViewModelStub.swift in Sources */,
 				18B7DB8229EBCDF800034B1E /* MapViewControllerTests.swift in Sources */,
+				18A042E829F51B6B001941C2 /* ATMBuilder.swift in Sources */,
 				18B7DB8429EBCF7100034B1E /* CBATransactionControllerTests.swift in Sources */,
 				CD8C4C3D2874350C0056D371 /* CommBankAssignmentSkeletonTests.swift in Sources */,
+				18A042E729F51B6B001941C2 /* TransactionBuilder.swift in Sources */,
+				18A042ED29F52CAC001941C2 /* NetworkTests.swift in Sources */,
 				18AFE7AD29E9683F0023ACB7 /* TransactionsViewModelTests.swift in Sources */,
 				18AFE7AB29E968290023ACB7 /* TransactionViewModelTests.swift in Sources */,
+				18A042E929F51B6B001941C2 /* AccountDetailBuilder.swift in Sources */,
 				18F8ADCB29E9BD080042AD83 /* PendingTransactionViewModelTests.swift in Sources */,
 				1893361C29EAA8FE009DAB2B /* DateViewModelTests.swift in Sources */,
 				18F8ADCF29E9C8FF0042AD83 /* AccountViewModelTests.swift in Sources */,
